@@ -1,79 +1,186 @@
-# 💻 Prática 05: FlatList e App que Não Esquece
+# 💻 Prática 05 — MetasSemestre
 
-Nesta prática o To-Do ganha lista eficiente e persistência local. **Ainda não** vamos extrair componentes — isso é a Prática 06.
+Aplicativo desenvolvido em React Native com Expo para cadastrar e acompanhar metas acadêmicas do semestre.
 
-## 🎯 Objetivos
-
-* Substituir `.map()` por `FlatList`.
-* Salvar e carregar tarefas com AsyncStorage + `useEffect`.
-* Validar que fechar e reabrir o app mantém os dados.
+O projeto utiliza estado, componentização, eventos, FlatList e persistência local com AsyncStorage.
 
 ---
 
-## 📦 Fluxo Git
+## 🎯 Funcionalidades
 
-1. Crie a Issue da **Prática 05**.
-2. Branch:
+- Adicionar metas acadêmicas
+- Impedir o cadastro de metas vazias
+- Remover metas
+- Marcar metas como concluídas
+- Desmarcar metas concluídas
+- Contador de metas pendentes e concluídas
+- Persistência das metas mesmo após recarregar ou reabrir o aplicativo
+- Feedback visual nos elementos clicáveis
 
-```bash
-git checkout -b feature/pratica05
+---
+
+## ✅ Como marcar uma meta como concluída
+
+Para marcar uma meta como concluída, basta **clicar em qualquer lugar da barra da meta**.
+
+Ao concluir:
+
+- o texto fica riscado;
+- a meta passa a ser contabilizada como concluída;
+- o contador do cabeçalho é atualizado.
+
+Para voltar a meta para pendente, basta clicar novamente na barra.
+
+> O botão **Remover** continua sendo usado somente para excluir a meta.
+
+---
+
+## 🧩 Componentização
+
+O projeto possui dois componentes na pasta `components/`:
+
+### `MetaInput.js`
+
+Responsável pelo campo de texto e botão de adicionar.
+
+Props utilizadas:
+
+- `value`
+- `onChangeText`
+- `onAdd`
+
+### `MetaList.js`
+
+Responsável por exibir as metas através de uma `FlatList`.
+
+Props utilizadas:
+
+- `metas`
+- `onDelete`
+- `onToggle`
+
+---
+
+## 💾 Persistência com AsyncStorage
+
+As metas são armazenadas localmente utilizando a chave:
+
+```text
+@metas_semestre
 ```
 
-3. Trabalhe em `praticas/pratica05` (evolua a base da Prática 04).
+### useEffect de carregamento
+
+No `App.js`, existe um `useEffect` executado na montagem do aplicativo.
+
+Ele utiliza:
+
+```javascript
+AsyncStorage.getItem('@metas_semestre')
+```
+
+Caso existam metas armazenadas, os dados são convertidos utilizando `JSON.parse()` e colocados novamente no estado através de `setMetas()`.
+
+Também foi utilizado `try/catch` para tratar possíveis erros durante o carregamento.
+
+### useEffect de salvamento
+
+Existe também outro `useEffect`, responsável por salvar as metas sempre que a lista for alterada.
+
+Os dados são convertidos utilizando:
+
+```javascript
+JSON.stringify(metas)
+```
+
+e armazenados utilizando:
+
+```javascript
+AsyncStorage.setItem()
+```
+
+Foi utilizado um estado de controle para evitar que uma lista vazia seja salva antes que o carregamento inicial seja concluído.
+
+---
+
+## ⭐ Desafio opcional
+
+Também foi implementado o desafio opcional da atividade.
+
+Cada meta possui o campo:
+
+```javascript
+concluida: boolean
+```
+
+Ao clicar na barra da meta, o valor é alternado entre concluída e pendente.
+
+Metas concluídas possuem o texto riscado.
+
+O cabeçalho também mostra a quantidade de:
+
+```text
+X pendentes / Y concluídas
+```
+
+O estado de conclusão também é salvo no AsyncStorage.
+
+---
+
+## 📸 Prints
+
+### Lista vazia
+
+![Lista vazia](./prints/lista-vazia.png)
+
+### Lista com itens
+
+![Lista com itens](./prints/lista-com-itens.png)
+
+### Lista após reabrir o aplicativo
+
+![Lista após reabrir](./prints/lista-apos-reabrir.png)
+
+---
+
+## ▶️ Executando o projeto
+
+Entre na pasta do projeto:
+
+```bash
+cd MetasSemestre
+```
+
+Instale as dependências:
 
 ```bash
 npm install
-npx expo start
 ```
 
----
-
-## 🛠️ Parte A — FlatList
-
-1. Remova o `.map()` da lista.
-2. Importe `FlatList` de `react-native`.
-3. Configure:
-
-* `data={tasks}`
-* `keyExtractor={(item) => item.id}`
-* `renderItem={...}` desenhando cada tarefa (card ainda pode ficar inline no `App`)
-
-4. Teste adicionando **muitas** tarefas (15+) e confirme a rolagem suave.
-
----
-
-## 🛠️ Parte B — AsyncStorage
-
-1. Pare o bundler (Ctrl+C) e instale:
+Para executar utilizando Expo Web:
 
 ```bash
-npx expo install @react-native-async-storage/async-storage
+npx expo start --web
 ```
 
-2. Crie `saveTasks` (async): grave a lista com `setItem` + `JSON.stringify`.
-3. Chame `saveTasks` após adicionar e após deletar (com a lista já atualizada).
-4. Crie `loadTasks` (async): leia com `getItem`, faça `JSON.parse` se houver valor, e use `setTasks`.
-5. No `useEffect` com `[]`, chame `loadTasks()` na montagem.
+Caso seja necessário instalar as dependências web:
 
-### Teste extremo
-
-Adicione 3 tarefas → feche o app por completo (remover dos recentes) → abra de novo → as tarefas devem continuar lá.
+```bash
+npx expo install react-dom react-native-web @expo/metro-runtime
+```
 
 ---
 
-## ✅ Critérios de entrega
-
-* [ ] `FlatList` rolando com muitos itens
-* [ ] Persistência: fechar e reabrir mantém as tarefas
-* [ ] Add e delete continuam funcionando
-* [ ] Issue, branch `feature/pratica05`, commit, push e Pull Request
-
-### Commit sugerido
+## 📦 Dependências utilizadas
 
 ```bash
-git add .
-git commit -m "Feat: Adiciona FlatList e AsyncStorage para persistir tarefas"
-git push origin feature/pratica05
+npx expo install @react-native-async-storage/async-storage react-native-safe-area-context
 ```
 
-Na **Aula 06**, vamos **organizar o código**: extrair o card da tarefa para um componente reutilizável com props.
+---
+
+## 🌿 Branch
+
+```text
+feature/pratica05
+```
