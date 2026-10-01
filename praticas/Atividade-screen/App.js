@@ -18,6 +18,11 @@ function BottomTabScreen() {
         tabBarLabelStyle: {
           fontSize: 12,
         },
+        tabBarStyle: {
+          height: 70,
+          paddingTop: 6,
+          paddingBottom: 10,
+        },
         headerRight: () => (
           <IconButton
             icon="add"
