@@ -133,4 +133,4 @@ As seis capturas foram realizadas no **Expo Web**: três no navegador em formato
 
 ## Organização da entrega
 
-Desenvolvimento realizado na branch `feature/atividade-screen`, relacionado à [Issue #11](https://github.com/xande0804/IESB-PDM-OESTE/issues/11). A entrega será feita por Pull Request para a branch `main`.
+Desenvolvimento realizado na branch `feature/atividade-screen`, relacionado à [Issue #11](https://github.com/xande0804/IESB-PDM-OESTE/issues/11). A entrega foi realizada por meio do [Pull Request #12](https://github.com/xande0804/IESB-PDM-OESTE/pull/12), aberto da branch `feature/atividade-screen` para a `main`.
