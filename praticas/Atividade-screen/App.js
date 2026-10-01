@@ -40,11 +40,7 @@ function BottomTabScreen() {
           title: 'Despesas Recentes',
           tabBarLabel: 'Recentes',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="hourglass"
-              size={size}
-              color={color}
-            />
+            <Ionicons name="hourglass" size={size} color={color} />
           ),
         }}
       />
@@ -56,11 +52,7 @@ function BottomTabScreen() {
           title: 'Todas as Despesas',
           tabBarLabel: 'Todas',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="wallet-outline"
-              size={size}
-              color={color}
-            />
+            <Ionicons name="wallet-outline" size={size} color={color} />
           ),
         }}
       />
@@ -75,17 +67,13 @@ export default function App() {
         <Stack.Screen
           name="Despesas"
           component={BottomTabScreen}
-          options={{
-            headerShown: false,
-          }}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen
           name="GerenciarDespesa"
           component={GerenciarDespesa}
-          options={{
-            title: 'Gerenciar Despesa',
-          }}
+          options={{ title: 'Gerenciar Despesa' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
