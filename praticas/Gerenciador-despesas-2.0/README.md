@@ -78,6 +78,7 @@ Salvar as capturas na pasta `prints/` dentro deste projeto:
 | `editar-despesa.png` | Formulário preenchido em modo de edição |
 | `busca-filtros.png` | Filtro por categoria combinado com busca e sumário |
 | `limpar-tudo.png` | Confirmação antes de limpar todas as despesas |
+| `apos-limpar-tudo.png` | Estado vazio após confirmar a limpeza |
 | `layout-responsivo.png` | Lista com duas colunas em largura superior a 600 px |
 
 As capturas devem constar também na descrição do Pull Request, com nome e matrícula do aluno.
