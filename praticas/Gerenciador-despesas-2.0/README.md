@@ -26,6 +26,8 @@ App.js
 src/
   components/
     IconButton.js
+    DateInput.js
+    DateInput.web.js
     despesa/
       DespesaItem.js
       DespesaLista.js
@@ -64,8 +66,24 @@ Categorias: **Alimentação, Transporte, Material e Outros**. Valor admite ponto
 
 O projeto usa React Native, Expo SDK 57, React Navigation (Bottom Tabs + Native Stack), Ionicons, DateTimePicker, Context API, useReducer e AsyncStorage. No **Expo Web**, a data pode ser escolhida por um campo de calendário do navegador (`DateInput.web.js`); no **Expo Go/Android/iOS**, continua usando o DateTimePicker nativo (`DateInput.js`). Não utiliza bibliotecas prontas de gerenciamento de estado ou formulário.
 
+## Evidências para a entrega
+
+Salvar as capturas na pasta `prints/` dentro deste projeto:
+
+| Arquivo | O que demonstra |
+| --- | --- |
+| `tema-claro.png` | Lista de despesas no modo claro |
+| `tema-escuro.png` | Lista de despesas no modo escuro |
+| `formulario-erros.png` | Formulário com mensagens por campo, sem salvar dados inválidos |
+| `editar-despesa.png` | Formulário preenchido em modo de edição |
+| `busca-filtros.png` | Filtro por categoria combinado com busca e sumário |
+| `limpar-tudo.png` | Confirmação antes de limpar todas as despesas |
+| `layout-responsivo.png` | Lista com duas colunas em largura superior a 600 px |
+
+As capturas devem constar também na descrição do Pull Request, com nome e matrícula do aluno.
+
 ## Validação da entrega
 
-O roteiro do professor contém 14 verificações manuais. Antes de enviar o PR, conferir especialmente: início sem dados, validações e mensagens, cadastrar/editar/excluir, pesquisa, dados salvos após fechar, tema claro/escuro e sombras. Conferir também os três bônus.
+O roteiro da atividade contém 14 verificações manuais, além dos três bônus. Antes de concluir a entrega, conferir: primeiro acesso vazio, validações por campo, cadastro, edição, exclusão, busca, persistência após reabrir, tema claro/escuro, cards com sombra, filtro combinado, limpeza com confirmação e responsividade.
 
-As telas e a documentação foram preparadas pelo repositório; **a execução no Expo Go/Android e os prints finais ainda precisam ser conferidos no dispositivo**. Anexar ao PR imagens da lista no modo claro e escuro, além do formulário mostrando erros. O PR deve informar o nome e a matrícula.
+**Situação:** implementação versionada; a verificação completa no dispositivo Android/Expo Go e as capturas finais devem ser conferidas antes de marcar a entrega como concluída.
