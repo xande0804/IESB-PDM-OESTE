@@ -85,5 +85,3 @@ As capturas devem constar também na descrição do Pull Request, com nome e mat
 ## Validação da entrega
 
 O roteiro da atividade contém 14 verificações manuais, além dos três bônus. Antes de concluir a entrega, conferir: primeiro acesso vazio, validações por campo, cadastro, edição, exclusão, busca, persistência após reabrir, tema claro/escuro, cards com sombra, filtro combinado, limpeza com confirmação e responsividade.
-
-**Situação:** implementação versionada; a verificação completa no dispositivo Android/Expo Go e as capturas finais devem ser conferidas antes de marcar a entrega como concluída.
