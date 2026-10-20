@@ -2,7 +2,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
-import { useColorScheme } from 'react-native';
+import { Platform, useColorScheme } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import { ExpensesContextProvider } from './src/store/expenses-context';
@@ -23,10 +23,24 @@ function BottomTabScreen() {
     <Tab.Navigator screenOptions={({ navigation }) => ({
       headerStyle: { backgroundColor: colors.card },
       headerTintColor: colors.text,
-      tabBarStyle: { backgroundColor: colors.card, borderTopColor: colors.border },
+      tabBarStyle: {
+        backgroundColor: colors.card,
+        borderTopColor: colors.border,
+        ...(Platform.OS === 'web' ? {
+          height: 76,
+          paddingTop: 8,
+          paddingBottom: 8,
+        } : {}),
+      },
       tabBarActiveTintColor: colors.primary,
       tabBarInactiveTintColor: colors.muted,
-      tabBarLabelStyle: { fontSize: 12 },
+      tabBarLabelStyle: {
+        fontSize: 12,
+        lineHeight: 18,
+        marginTop: 4,
+        marginBottom: 0,
+      },
+      tabBarItemStyle: Platform.OS === 'web' ? { paddingVertical: 4 } : undefined,
       headerRight: () => (
         <IconButton icon="add" size={24} color={colors.primary}
           onPress={() => navigation.navigate('GerenciarDespesa')} />
