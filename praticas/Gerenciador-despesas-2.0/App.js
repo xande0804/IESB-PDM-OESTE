@@ -2,7 +2,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
-import { useColorScheme } from 'react-native';
+import { Platform, useColorScheme } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import { ExpensesContextProvider } from './src/store/expenses-context';
@@ -23,21 +23,23 @@ function BottomTabScreen() {
     <Tab.Navigator screenOptions={({ navigation }) => ({
       headerStyle: { backgroundColor: colors.card },
       headerTintColor: colors.text,
-      // Ícone ao lado do texto evita corte dos rótulos na versão Web.
-      tabBarLabelPosition: 'beside-icon',
+      // Na Web, o texto fica ao lado do ícone para evitar recorte do rótulo.
+      tabBarLabelPosition: Platform.OS === 'web' ? 'beside-icon' : 'below-icon',
       tabBarStyle: {
         backgroundColor: colors.card,
         borderTopColor: colors.border,
-        height: 64,
-        paddingTop: 6,
-        paddingBottom: 6,
+        ...(Platform.OS === 'web' ? {
+          height: 64,
+          paddingTop: 6,
+          paddingBottom: 6,
+        } : {}),
       },
       tabBarActiveTintColor: colors.primary,
       tabBarInactiveTintColor: colors.muted,
       tabBarLabelStyle: {
         fontSize: 12,
         lineHeight: 18,
-        marginLeft: 6,
+        marginLeft: Platform.OS === 'web' ? 6 : 0,
         marginTop: 0,
         marginBottom: 0,
       },
