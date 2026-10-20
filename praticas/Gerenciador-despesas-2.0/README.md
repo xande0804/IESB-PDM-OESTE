@@ -62,7 +62,7 @@ Modelo de despesa: `{ id, description, amount, date, category }`.
 
 Categorias: **Alimentação, Transporte, Material e Outros**. Valor admite ponto ou vírgula e no máximo duas casas decimais. A edição mantém o identificador original; a exclusão pede confirmação. Dados salvos em JSON têm as datas convertidas novamente para objetos `Date` na leitura.
 
-O projeto usa React Native, Expo SDK 57, React Navigation (Bottom Tabs + Native Stack), Ionicons, DateTimePicker, Context API, useReducer e AsyncStorage. Não utiliza bibliotecas prontas de gerenciamento de estado ou formulário.
+O projeto usa React Native, Expo SDK 57, React Navigation (Bottom Tabs + Native Stack), Ionicons, DateTimePicker, Context API, useReducer e AsyncStorage. No **Expo Web**, a data pode ser escolhida por um campo de calendário do navegador (`DateInput.web.js`); no **Expo Go/Android/iOS**, continua usando o DateTimePicker nativo (`DateInput.js`). Não utiliza bibliotecas prontas de gerenciamento de estado ou formulário.
 
 ## Validação da entrega
 
