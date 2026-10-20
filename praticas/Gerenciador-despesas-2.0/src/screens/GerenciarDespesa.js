@@ -167,7 +167,6 @@ export default function GerenciarDespesa({ route, navigation }) {
           <DateTimePicker
             value={form.date}
             mode="date"
-            maximumDate={new Date()}
             onChange={onDateChange}
           />
         )}
