@@ -6,7 +6,7 @@ function normalizeAmountInput(text, previous = '') {
 }
 
 function toAmount(text) {
-  return Number(String(text).replace(',', '.'));
+  return parseFloat(String(text).replace(',', '.'));
 }
 
 function validate(values, now = new Date()) {
