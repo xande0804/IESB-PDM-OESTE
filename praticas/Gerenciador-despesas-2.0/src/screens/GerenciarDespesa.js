@@ -13,13 +13,12 @@ import {
   View,
   useColorScheme,
 } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateInput from '../components/DateInput';
 
 import { useExpenses } from '../store/expenses-context';
 import { themes } from '../constants/theme';
 import {
   CATEGORIES,
-  formatDate,
   normalizeAmountInput,
   toAmount,
   validate,
@@ -39,7 +38,6 @@ export default function GerenciarDespesa({ route, navigation }) {
     category: selected?.category ?? '',
   });
   const [errors, setErrors] = useState({});
-  const [showDatePicker, setShowDatePicker] = useState(false);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
 
   useLayoutEffect(() => {
@@ -100,13 +98,6 @@ export default function GerenciarDespesa({ route, navigation }) {
     ]);
   }
 
-  function onDateChange(event, selectedDate) {
-    setShowDatePicker(false);
-    if (event.type === 'set' && selectedDate) {
-      handleChange('date', selectedDate);
-    }
-  }
-
   function renderError(field) {
     if (!errors[field]) return null;
     return <Text style={[styles.error, { color: colors.danger }]}>{errors[field]}</Text>;
@@ -155,21 +146,13 @@ export default function GerenciarDespesa({ route, navigation }) {
         {renderError('amount')}
 
         <Text style={[styles.label, { color: colors.text }]}>Data</Text>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Escolher data"
+        <DateInput
+          date={form.date}
           style={fieldStyle('date')}
-          onPress={() => setShowDatePicker(true)}>
-          <Text style={{ color: colors.text }}>{formatDate(form.date)}</Text>
-        </Pressable>
+          textColor={colors.text}
+          onChange={date => handleChange('date', date)}
+        />
         {renderError('date')}
-        {showDatePicker && (
-          <DateTimePicker
-            value={form.date}
-            mode="date"
-            onChange={onDateChange}
-          />
-        )}
 
         <Text style={[styles.label, { color: colors.text }]}>Categoria</Text>
         <Pressable
