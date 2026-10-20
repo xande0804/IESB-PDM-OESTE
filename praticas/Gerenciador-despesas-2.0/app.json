@@ -3,9 +3,9 @@
     "name": "Gerenciador-despesas-2.0",
     "slug": "Gerenciador-despesas-2.0",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
     },
