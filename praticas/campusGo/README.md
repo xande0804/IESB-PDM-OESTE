@@ -5,16 +5,19 @@ Aplicativo React Native / Expo Router para a Atividade Prática CampusGo, discip
 **Pasta:** `praticas/campusGo` | **Branch:** `feature/campus-go`
 
 ## Rodar
-Requer Node.js 22+ e Expo Go atualizado (para o SDK 57).
+Requer Node.js 22.13+ e Expo SDK 57. Use uma versão do Expo Go compatível com o SDK 57; o aplicativo móvel não foi validado apenas pelos testes no navegador.
 
 ```bash
+git fetch origin
+git switch feature/campus-go
 cd praticas/campusGo
 cp .env.example .env
 npm install
+npx expo install --check
 npx expo start --clear
 ```
 
-No Windows PowerShell, use `Copy-Item .env.example .env`. Para testar no navegador, pressione `w` ou execute `npm run web`. O professor também poderá abrir no Expo Go pelo QR code.
+No Windows PowerShell, troque `cp .env.example .env` por `Copy-Item .env.example .env`. Para testar no navegador, pressione `w` ou execute `npm run web`. Para abrir no Expo Go, use a versão compatível com o SDK 57 e o QR code. Se o Expo avisar sobre versões incompatíveis, execute `npx expo install --fix`, reinicie o servidor e atualize os arquivos de dependências no Git antes de entregar.
 
 ## Funcionalidades
 - Expo Router com abas Início, Tarefas, Bolso e Perfil, detalhe dinâmico da tarefa 42 e modal Nova tarefa.
@@ -52,3 +55,7 @@ No Windows PowerShell, use `Copy-Item .env.example .env`. Para testar no navegad
 - Evidências: anexar as imagens na descrição do PR.
 
 Documentação detalhada: [SPEC.md](SPEC.md).
+
+## Estado de validação
+
+A estrutura do código foi revisada no GitHub, mas o aplicativo ainda precisa ser executado em uma máquina com dependências instaladas. Os 14 passos da rubrica, especialmente câmera, localização e notificações no Expo Go, **não podem ser marcados como aprovados antes da execução**. Capture prints reais, não capturas simuladas.
