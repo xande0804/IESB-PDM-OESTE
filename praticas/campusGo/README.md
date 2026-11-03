@@ -47,12 +47,15 @@ No Windows PowerShell, troque `cp .env.example .env` por `Copy-Item .env.example
 
 **Para a entrega:** anexar prints das quatro abas, detalhe 42, modal, Bolso/compartilhar, Perfil/foto, check-in, mural e erro. Não comitar .env nem node_modules.
 
-## Descrição sugerida do PR
-- Aluno: **[NOME COMPLETO]**
-- Matrícula: **[MATRÍCULA]**
-- Tarefas 1–5: concluídas após verificação prática.
-- Bônus: criação de aviso e ícone animado.
-- Evidências: anexar as imagens na descrição do PR.
+## Identificação e entrega
+- **Aluno:** Alexandre Gomes da Silva
+- **Matrícula:** 25114290062
+- **Disciplina:** Programação para Dispositivos Móveis — Aula 10
+- **Professor:** Marcelo Alves Farias
+- **Pull request:** [#17 — CampusGo](https://github.com/xande0804/IESB-PDM-OESTE/pull/17)
+- **Tarefas implementadas:** roteamento, Bolso, Perfil e localização, lembretes/háptica/animações e mural.
+- **Bônus implementados:** criação de aviso (POST) e ícone animado (Reanimated).
+- **Evidências:** arquivos `prints/` anexados à branch, referenciados no PR após o envio; documentação de validação Web e limitações nativas abaixo.
 
 Documentação detalhada: [SPEC.md](SPEC.md).
 
