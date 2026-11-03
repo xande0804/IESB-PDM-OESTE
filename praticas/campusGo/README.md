@@ -56,6 +56,17 @@ No Windows PowerShell, troque `cp .env.example .env` por `Copy-Item .env.example
 
 Documentação detalhada: [SPEC.md](SPEC.md).
 
-## Estado de validação
+## Validação realizada — Expo Web
 
-A estrutura do código foi revisada no GitHub, mas o aplicativo ainda precisa ser executado em uma máquina com dependências instaladas. Os 14 passos da rubrica, especialmente câmera, localização e notificações no Expo Go, **não podem ser marcados como aprovados antes da execução**. Capture prints reais, não capturas simuladas.
+O aplicativo foi executado no navegador com as dependências instaladas. Foram observados os seguintes resultados, documentados nas capturas da entrega:
+
+- Navegação entre as quatro abas, acesso ao detalhe de tarefa com ID 42 e abertura/fechamento da rota `/new-task`. No Expo Web, a rota modal pode ocupar a página inteira.
+- Exibição do total de despesas mesmo com lista vazia (`R$ 0,00`) e abertura do compartilhamento no navegador.
+- Seleção de foto pela galeria e manutenção da foto após atualizar a página (`F5`).
+- Mural recebendo avisos do JSONPlaceholder e apresentação da tela de erro com botão **Tentar novamente** quando a URL da API foi temporariamente invalidada.
+- Bônus de criar aviso: resposta do JSONPlaceholder com ID `101` exibida em alerta. A API simula a criação, mas não persiste o post.
+- **Check-in:** no navegador, a permissão de localização foi **negada intencionalmente nas configurações do site** para verificar o cenário de erro. O aplicativo exibiu o alerta **“Sem localização — Permissão negada. O check-in não foi feito.”** sem interromper a navegação. Isso comprova o tratamento da permissão negada no Web, **não** a obtenção de um endereço.
+
+O teste em dispositivo físico com Expo Go **não foi concluído**. Câmera e permissões nativas, notificação local em 10 segundos e resposta háptica permanecem **sem validação prática em celular**. Os serviços correspondentes estão implementados para execução nativa, mas não se declara aprovação desses cenários sem testá-los.
+
+As imagens anexadas ao PR são capturas reais feitas no navegador; não há simulação de capturas nativas.
