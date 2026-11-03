@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "CampusGo",
+    "slug": "campus-go",
+    "scheme": "campusgo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "br.edu.iesb.campusgo"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
